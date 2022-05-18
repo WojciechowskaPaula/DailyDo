@@ -1,0 +1,10 @@
+﻿@model DailyDo.Models.Task
+
+<form asp-controller="Task" asp-action="AddNew" method="post">
+<input type="hidden" asp-for=Id/>
+<div class="mb-3">
+  <label for="" class="form-label">Example textarea</label>
+  <textarea asp-for=Description class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<input type="submit" value ="Save" class="btn btn-primary "  />
+</form>

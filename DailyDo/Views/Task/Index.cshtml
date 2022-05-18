@@ -1,0 +1,15 @@
+﻿@model List<DailyDo.Models.Task>
+
+ 
+<div class="card w-50" style="width: 20rem;">
+    <div class="card-header">
+        Today
+    </div>
+    @foreach (var item in Model)
+    {
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@item.Description</li>
+        </ul>
+    }
+</div>
+<a class="btn btn-primary" asp-action="AddNewForm">Add new </a>
