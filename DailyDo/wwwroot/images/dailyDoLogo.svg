@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500"
+   height="200"
+   viewBox="0 0 132.29166 52.916668"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04, custom)"
+   sodipodi:docname="dailyDoLogo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="true"
+     units="px"
+     inkscape:zoom="0.71090067"
+     inkscape:cx="431.14321"
+     inkscape:cy="165.98662"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     width="500px"
+     inkscape:snap-global="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid24"
+       spacingx="9.5250001"
+       spacingy="9.5250001" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.2222px;line-height:1.25;font-family:'Engravers MT';-inkscape-font-specification:'Engravers MT';fill:#558dff;stroke-width:0.582083;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       x="4.5693598"
+       y="29.050373"
+       id="text12147"><tspan
+         sodipodi:role="line"
+         id="tspan12145"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28.2222px;font-family:'Engravers MT';-inkscape-font-specification:'Engravers MT';fill:#558dff;stroke-width:0.582083;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+         x="4.5693598"
+         y="29.050373"><tspan
+           style="font-size:31.75px;stroke:#000080;stroke-width:0.582083;stroke-miterlimit:4;stroke-dasharray:none;fill:#558dff;fill-opacity:1"
+           id="tspan52655">D</tspan><tspan
+           style="stroke:#000080;fill:#558dff;fill-opacity:1"
+           id="tspan103497">aily</tspan></tspan></text>
+    <path
+       sodipodi:type="star"
+       style="fill:#ff5555;fill-opacity:1;fill-rule:evenodd;stroke:#000080;stroke-width:3.77953;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path23497"
+       inkscape:flatsided="false"
+       sodipodi:sides="4"
+       sodipodi:cx="180"
+       sodipodi:cy="108"
+       sodipodi:r1="36"
+       sodipodi:r2="18"
+       sodipodi:arg1="1.5707963"
+       sodipodi:arg2="2.3561945"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="M 180,144 167.27208,120.72792 144,108 167.27208,95.272078 180,72 192.72792,95.272078 216,108 192.72792,120.72792 Z"
+       transform="matrix(0.26458333,0,0,0.26458333,72.185035,13.485265)" />
+    <text
+       xml:space="preserve"
+       style="font-size:29.9861px;line-height:1.25;font-family:Gigi;-inkscape-font-specification:Gigi;stroke-width:0.58208333;stroke-miterlimit:4;stroke-dasharray:none"
+       x="52.105263"
+       y="51.733082"
+       id="text123283"><tspan
+         sodipodi:role="line"
+         id="tspan123281"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.9861px;font-family:'Engravers MT';-inkscape-font-specification:'Engravers MT';fill:#ff5555;fill-opacity:1;stroke:#000080;stroke-width:0.58208333;stroke-miterlimit:4;stroke-dasharray:none"
+         x="52.105263"
+         y="51.733082">DO</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.29167px;line-height:1.25;font-family:Gigi;-inkscape-font-specification:Gigi;stroke-width:0.264583"
+       x="98.999992"
+       y="48.383461"
+       id="text139747"><tspan
+         sodipodi:role="line"
+         id="tspan139745"
+         style="stroke-width:0.264583"></tspan></text>
+  </g>
+</svg>
