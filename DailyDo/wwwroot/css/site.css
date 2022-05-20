@@ -17,3 +17,10 @@ body {
   margin-bottom: 60px;
 }
 
+h3 {
+    padding-bottom: 10px;
+}
+
+.buttonsMargin{
+    margin-top: 15px;
+}
