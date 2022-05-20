@@ -1,6 +1,6 @@
 ﻿@model List<DailyDo.Models.Task>
 
- 
+
 <div class="card w-50" style="width: 20rem;">
     <div class="card-header">
         Today
@@ -8,7 +8,11 @@
     @foreach (var item in Model)
     {
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">@Html.Raw(item.Description)</li>
+            <li class="list-group-item">
+                @Html.Raw(item.Description)
+                <a  asp-action="EditForm" asp-route-id="@item.Id" class="float-end"><img class="icons" src="/images/edit-file.svg" alt="Edit icon" /></a>
+                <a class="icons float-end icons"><img src="/images/close.svg" alt="Delete icon"/></a>
+            </li>
         </ul>
     }
 </div>

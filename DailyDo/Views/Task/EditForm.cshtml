@@ -1,0 +1,27 @@
+﻿@model DailyDo.Models.Task
+
+<form asp-controller="Task" asp-action="Edit" method="post">
+    <input type="hidden" asp-for=Id value="@Model.Id" >
+    <input type="hidden" asp-for="ModificationDate" value="@Model.ModificationDate" />
+    <input type="hidden" asp-for="IsDone" value="@Model.IsDone" />
+    <div class="col-sm-8">
+        <div>
+            <textarea id="editor" asp-for=Description class="form-control" rows="5"></textarea>
+        </div>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary buttonsMargin " />
+    <a asp-action="Index" class="btn btn-dark buttonsMargin">Cancel</a>
+</form>
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

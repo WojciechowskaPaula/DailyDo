@@ -35,5 +35,13 @@ namespace DailyDo.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult EditForm(int id)
+        {
+            var taskToEdit = _dbContext.Tasks.Where(x => x.Id == id).FirstOrDefault();
+            return View(taskToEdit);
+        }
+
     }
 }
