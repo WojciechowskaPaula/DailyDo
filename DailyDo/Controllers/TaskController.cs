@@ -43,5 +43,15 @@ namespace DailyDo.Controllers
             return View(taskToEdit);
         }
 
+        public IActionResult Update (DailyDo.Models.Task task)
+        {
+            var updateTask = _dbContext.Tasks.Where(x => x.Id == task.Id);
+            task.ModificationDate = DateTime.Now;
+            task.IsDone = false;
+            _dbContext.Entry(task).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
     }
 }
