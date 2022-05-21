@@ -24,7 +24,6 @@ namespace DailyDo.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddNew(DailyDo.Models.Task task)
@@ -43,6 +42,8 @@ namespace DailyDo.Controllers
             return View(taskToEdit);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Update (DailyDo.Models.Task task)
         {
             var updateTask = _dbContext.Tasks.Where(x => x.Id == task.Id);
@@ -52,6 +53,16 @@ namespace DailyDo.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
 
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete (int id)
+        {
+            var taskToDelete = _dbContext.Tasks.Where(x => x.Id == id).FirstOrDefault();
+            _dbContext.Remove(taskToDelete);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
