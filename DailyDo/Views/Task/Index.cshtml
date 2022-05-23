@@ -9,10 +9,12 @@
     {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                <label>
+                <label class="customcheck">
                     <input type="checkbox" asp-for="@item.IsDone" onchange="SetCheckboxDone(@item.Id)" />
-                    @Html.Raw(item.Description)
+                    <span class="checkmark"></span>
+                    
                 </label>
+                @Html.Raw(item.Description)
                 <a asp-action="EditForm" asp-route-id="@item.Id" class="float-end"><img class="icons" src="/images/edit-file.svg" alt="Edit icon" /></a>
                 <a asp-action="Delete" asp-route-id="@item.Id" class="float-end"> <img class="icons" src="/images/close.svg" alt="Delete icon" /></a>
             </li>
