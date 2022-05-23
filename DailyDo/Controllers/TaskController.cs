@@ -68,7 +68,15 @@ namespace DailyDo.Controllers
         public IActionResult SetDone([FromBody] DailyDo.Models.Task task)
         {
             var taskToCheck = _dbContext.Tasks.Where(x => x.Id == task.Id).FirstOrDefault();
-            taskToCheck.IsDone = true;
+            if(taskToCheck.IsDone)
+            {
+                taskToCheck.IsDone = false;
+            }
+            else
+            {
+                taskToCheck.IsDone = true;
+            }
+            
             _dbContext.SaveChanges();
             return Ok(true);
         }
