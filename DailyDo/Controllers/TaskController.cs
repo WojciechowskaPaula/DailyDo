@@ -52,7 +52,6 @@ namespace DailyDo.Controllers
             _dbContext.Entry(task).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
-
         }
 
         [HttpPost]

@@ -29,5 +29,8 @@ h3 {
 .icons{
     height:20px;
     margin:10px;
-    
+}
+
+p {
+    display: inline-block;
 }

@@ -3,13 +3,16 @@
 
 <div class="card w-50" style="width: 20rem;">
     <div class="card-header">
-        Today
+        Today | @DateTime.Now.Date.ToShortDateString()
     </div>
     @foreach (var item in Model)
     {
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
-                @Html.Raw(item.Description)
+                <label>
+                <input type="checkbox" asp-for="@item.IsDone" />
+                 @Html.Raw(item.Description)
+                 </label>
                 <a  asp-action="EditForm" asp-route-id="@item.Id" class="float-end"><img class="icons" src="/images/edit-file.svg" alt="Edit icon" /></a>
                 <a asp-action="Delete" asp-route-id ="@item.Id" class="float-end"> <img class="icons" src="/images/close.svg" alt="Delete icon"/></a>
             </li>
