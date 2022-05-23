@@ -54,8 +54,7 @@ namespace DailyDo.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public IActionResult Delete (int id)
         {
             var taskToDelete = _dbContext.Tasks.Where(x => x.Id == id).FirstOrDefault();
