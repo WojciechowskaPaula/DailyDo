@@ -10,14 +10,36 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
                 <label>
-                <input type="checkbox" asp-for="@item.IsDone" />
-                 @Html.Raw(item.Description)
-                 </label>
-                <a  asp-action="EditForm" asp-route-id="@item.Id" class="float-end"><img class="icons" src="/images/edit-file.svg" alt="Edit icon" /></a>
-                <a asp-action="Delete" asp-route-id ="@item.Id" class="float-end"> <img class="icons" src="/images/close.svg" alt="Delete icon"/></a>
+                    <input type="checkbox" asp-for="@item.IsDone" onchange="SetCheckboxDone(@item.Id)" />
+                    @Html.Raw(item.Description)
+                </label>
+                <a asp-action="EditForm" asp-route-id="@item.Id" class="float-end"><img class="icons" src="/images/edit-file.svg" alt="Edit icon" /></a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="float-end"> <img class="icons" src="/images/close.svg" alt="Delete icon" /></a>
             </li>
         </ul>
     }
 </div>
 <a class="btn btn-primary buttonsMargin" asp-action="AddNewForm">Add new </a>
+
+
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    function SetCheckboxDone(id){
+        console.log(id);
+        const data = {id : id};
+        fetch('/task/SetDone', {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:'+ data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+</script>
