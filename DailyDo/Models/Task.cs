@@ -15,5 +15,7 @@ namespace DailyDo.Models
 
         [Required]
         public bool IsDone { get; set; }
+
+        public Category Category { get; set; }
     }
 }
