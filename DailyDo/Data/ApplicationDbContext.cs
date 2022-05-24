@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DailyDo.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DailyDo.Data
 {
@@ -6,6 +7,7 @@ namespace DailyDo.Data
     {
         public ApplicationDbContext(DbContextOptions options) : base (options) { }
         public DbSet<Models.Task> Tasks { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
   
