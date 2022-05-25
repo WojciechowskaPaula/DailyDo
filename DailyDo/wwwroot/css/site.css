@@ -1,6 +1,7 @@
 html, body {
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
+    background-color: #F2DEFC;
 }
 
 @media (min-width: 768px) {
@@ -35,6 +36,11 @@ p {
     display: inline-block;
 }
 
+h1{
+    margin-bottom: 90px;
+    text-align:center;
+    margin: 0 auto;
+}
 customcheck {
     display: block;
     position: relative;
@@ -112,3 +118,16 @@ customcheck {
     margin-bottom: 0;
     padding: 0.5em 2em 0.5em 2em;
 }
+
+.cardStyle {
+    display: inline-block;
+    align-content: center;
+}
+
+.centerContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+

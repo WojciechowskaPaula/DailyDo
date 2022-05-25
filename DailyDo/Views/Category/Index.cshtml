@@ -1,8 +1,15 @@
 ﻿@model List<Category>
+<h1>Categories</h1>
+<div class="centerContent">
 
-    <ul>
-    @foreach(var item in Model){
-        <li>@item.CategoryName</li>
-    }
-    </ul>
-
+     @foreach(var item in Model){
+         
+    <div class="card text-center cardStyle" style="width: 18rem;">
+  <div class="card-body">
+     <h5 class="card-title">@item.CategoryName</h5>
+   
+    <a href="#" class="btn btn-outline-secondary">See all</a>
+  </div>
+  </div>
+  }
+  </div>
