@@ -1,4 +1,5 @@
 ﻿using DailyDo.Data;
+using DailyDo.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DailyDo.Controllers
@@ -21,16 +22,22 @@ namespace DailyDo.Controllers
         [HttpGet]
         public IActionResult AddNewForm()
         {
-            return View();
+            var categories = _dbContext.Categories.ToList();
+            TaskAndCategoryVM taskAndCategory = new TaskAndCategoryVM();
+            taskAndCategory.Categories = categories;
+            return View(taskAndCategory);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddNew(DailyDo.Models.Task task)
+        public IActionResult AddNew(TaskAndCategoryVM taskAndCategoryVM)
         {
-           var taskToAdd = _dbContext.Tasks.Add(task);
-            task.ModificationDate = DateTime.Now;
-            task.IsDone = false;
+            var taskFromVM = taskAndCategoryVM.Task; 
+            var categoryFromVM= _dbContext.Categories.Where(x => x.CategoryId == taskAndCategoryVM.Task.Category.CategoryId).FirstOrDefault();
+            taskFromVM.Category = categoryFromVM;
+            taskFromVM.ModificationDate = DateTime.Now;
+            taskFromVM.IsDone = false;
+            var taskToAdd = _dbContext.Tasks.Add(taskFromVM);
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }

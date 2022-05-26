@@ -1,12 +1,15 @@
-﻿@model DailyDo.Models.Task
+﻿@model TaskAndCategoryVM
 
 <form asp-controller="Task" asp-action="AddNew" method="post">
-    <input type="hidden" asp-for=Id >
+    <input type="hidden" asp-for=Task.Id >
      <h3>Type all challenges here</h3>
     <div class="col-sm-8">
         <div>
-            <textarea id="editor" asp-for=Description class="form-control" rows="5"></textarea>
+            <textarea id="editor" asp-for=Task.Description class="form-control" rows="5"></textarea>
         </div>
+    </div>
+    <div class="form-group">
+        @Html.DropDownListFor(x=>x.Task.Category.CategoryId, new SelectList(Model.Categories.Select(i=> new {Text = i.CategoryId, Value = i.CategoryName}), "Text", "Value"))
     </div>
     <input type="submit" value="Save" class="btn btn-primary buttonsMargin " />
     <a asp-action="Index" class="btn btn-dark buttonsMargin">Cancel</a>
