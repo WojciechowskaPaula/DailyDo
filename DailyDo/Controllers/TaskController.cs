@@ -16,7 +16,11 @@ namespace DailyDo.Controllers
         public IActionResult Index()
         {
             var allTasks = _dbContext.Tasks.ToList();
-            return View(allTasks);
+            var categories = _dbContext.Categories.ToList();
+            var listsVM = new TaskAndCategoryListsVM();
+            listsVM.Tasks = allTasks;
+            listsVM.Categories = categories;
+            return View(listsVM);
         }
 
         [HttpGet]
@@ -33,7 +37,7 @@ namespace DailyDo.Controllers
         public IActionResult AddNew(TaskAndCategoryVM taskAndCategoryVM)
         {
             var taskFromVM = taskAndCategoryVM.Task; 
-            var categoryFromVM= _dbContext.Categories.Where(x => x.CategoryId == taskAndCategoryVM.Task.Category.CategoryId).FirstOrDefault();
+           var categoryFromVM= _dbContext.Categories.Where(x => x.CategoryId == taskAndCategoryVM.Task.Category.CategoryId).FirstOrDefault();
             taskFromVM.Category = categoryFromVM;
             taskFromVM.ModificationDate = DateTime.Now;
             taskFromVM.IsDone = false;
