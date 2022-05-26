@@ -131,3 +131,10 @@ customcheck {
     height: 300px;
 }
 
+.categoryStyle {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-size:16px;
+    font-weight:500;
+
+}

@@ -8,8 +8,11 @@
             <textarea id="editor" asp-for=Task.Description class="form-control" rows="5"></textarea>
         </div>
     </div>
-    <div class="form-group">
-        @Html.DropDownListFor(x=>x.Task.Category.CategoryId, new SelectList(Model.Categories.Select(i=> new {Text = i.CategoryId, Value = i.CategoryName}), "Text", "Value"))
+    <div class="form-group ">
+        @Html.LabelFor(x=>Model.Categories, htmlAttributes: new { @class = "control-label col-sm-8 categoryStyle" })
+    <div class="col-sm-4">
+        @Html.DropDownListFor(x=>x.Task.Category.CategoryId, new SelectList(Model.Categories.Select(i=> new {Text = i.CategoryId, Value = i.CategoryName}), "Text", "Value"), htmlAttributes: new { @class = "form-control", id = "Category Name"})
+    </div>
     </div>
     <input type="submit" value="Save" class="btn btn-primary buttonsMargin " />
     <a asp-action="Index" class="btn btn-dark buttonsMargin">Cancel</a>
