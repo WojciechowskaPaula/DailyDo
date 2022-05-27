@@ -15,5 +15,10 @@ namespace DailyDo.Controllers
             var categoryList = _dbContext.Categories.ToList();
             return View(categoryList);
         }
+
+        public IActionResult AddNewCategoryForm()
+        {
+            return View();
+        }
     }
 }
