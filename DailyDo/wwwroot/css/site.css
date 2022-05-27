@@ -125,10 +125,9 @@ customcheck {
 }
 
 .centerContent {
-    display: flex;
+   text-align:center;
     align-items: center;
-    justify-content: center;
-    height: 300px;
+    height: auto;
 }
 
 .categoryStyle {
@@ -138,3 +137,9 @@ customcheck {
     font-weight:500;
 
 }
+.wrapper {
+  text-align:center;
+  margin:20px;
+}
+   
+   

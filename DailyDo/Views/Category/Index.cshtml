@@ -1,15 +1,23 @@
 ﻿@model List<Category>
+<div class="container">
 <h1>Categories</h1>
+</div>
+    <div class="wrapper">
+        <a class="btn btn-primary" asp-action="AddNewCategoryForm">Add new</a>
+        <a class="btn btn-dark" asp-controller="Task" asp-action="Index">Back to list</a>
+        </div>
+</div>
 <div class="centerContent">
 
-     @foreach(var item in Model){
-         
-    <div class="card text-center cardStyle" style="width: 18rem;">
-  <div class="card-body">
-     <h5 class="card-title">@item.CategoryName</h5>
-   
-    <a href="#" class="btn btn-outline-secondary">See all</a>
-  </div>
-  </div>
-  }
-  </div>
+    @foreach (var item in Model)
+    {
+
+        <div class="card text-center cardStyle" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">@item.CategoryName</h5>
+
+                <a href="#" class="btn btn-outline-secondary">See all</a>
+            </div>
+        </div>
+    }
+    
