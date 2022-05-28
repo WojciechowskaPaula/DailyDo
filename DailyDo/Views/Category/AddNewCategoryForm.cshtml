@@ -1,10 +1,12 @@
 ﻿@model Category
 
 <form asp-action="AddNew" method="post">
-<label for="CategoryName"class="form-label">Category Name:</label>
-<input type="text" class="form-control" id="CategoryName"/>
-
-<input type="submit" value="Save" class="btn btn-primary buttonsMargin " />
+    <input type="hidden" asp-for=CategoryId />
+    <div class="col-sm-4">
+<label for="CategoryName"class="form-label categoryStyle">Category Name:</label>
+<input asp-for="CategoryName" type="text" class="form-control" id="CategoryName"/>
+</div>
+<input type="submit" value="Save" class="btn btn-primary buttonsMargin" />
   <a asp-action="Index" class="btn btn-dark buttonsMargin">Cancel</a>
    
 </form>

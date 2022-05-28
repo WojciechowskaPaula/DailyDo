@@ -1,4 +1,5 @@
 ﻿using DailyDo.Data;
+using DailyDo.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DailyDo.Controllers
@@ -10,15 +11,27 @@ namespace DailyDo.Controllers
         {
             _dbContext = dbContext;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
             var categoryList = _dbContext.Categories.ToList();
             return View(categoryList);
         }
 
+        [HttpGet]
         public IActionResult AddNewCategoryForm()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddNew(Category category)
+        {
+            _dbContext.Categories.Add(category);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
