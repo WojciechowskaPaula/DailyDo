@@ -33,5 +33,13 @@ namespace DailyDo.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+           var categoryToRemove = _dbContext.Categories.Where(x => x.CategoryId == id).FirstOrDefault();
+            _dbContext.Remove(categoryToRemove);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

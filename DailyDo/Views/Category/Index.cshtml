@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h5 class="card-title">@item.CategoryName</h5>
 
-                <a href="#" class="btn btn-outline-secondary">See all</a>
+                <a asp-controller="Category" asp-action="Delete" class="btn btn-outline-danger" asp-route-id ="@item.CategoryId">Delete</a>
             </div>
         </div>
     }
