@@ -141,5 +141,12 @@ customcheck {
   text-align:center;
   margin:20px;
 }
+
+form {
+    padding: 15px;
+    width: 60%;
+    height:auto;
+    background-color: #F9F4FC;
+}
    
    
