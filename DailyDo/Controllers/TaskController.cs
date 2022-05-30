@@ -45,7 +45,7 @@ namespace DailyDo.Controllers
         public IActionResult AddNew(TaskAndCategoryVM taskAndCategoryVM)
         {
 
-            _logger.LogInformation($"action=addNew task={JsonSerializer.Serialize(taskAndCategoryVM)}");
+            _logger.LogInformation($"action=addNew task='{JsonSerializer.Serialize(taskAndCategoryVM)}'");
             var taskFromVM = taskAndCategoryVM.Task;
             var categoryFromVM = _dbContext.Categories.Where(x => x.CategoryId == taskAndCategoryVM.Task.Category.CategoryId).FirstOrDefault();
             taskFromVM.Category = categoryFromVM;
@@ -70,7 +70,7 @@ namespace DailyDo.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(DailyDo.Models.Task task)
         {
-            _logger.LogInformation($"action=update task={JsonSerializer.Serialize(task)}");
+            _logger.LogInformation($"action=update task='{JsonSerializer.Serialize(task)}'");
             var updateTask = _dbContext.Tasks.Where(x => x.Id == task.Id);
             task.ModificationDate = DateTime.Now;
             task.IsDone = false;
@@ -95,7 +95,7 @@ namespace DailyDo.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult SetDone([FromBody] DailyDo.Models.Task task)
         {
-            _logger.LogInformation($"action=setDone task={JsonSerializer.Serialize(task)}");
+            _logger.LogInformation($"action=setDone task='{JsonSerializer.Serialize(task)}'");
             var taskToCheck = _dbContext.Tasks.Where(x => x.Id == task.Id).FirstOrDefault();
             if (taskToCheck.IsDone)
             {
