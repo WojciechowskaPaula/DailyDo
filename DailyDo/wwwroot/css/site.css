@@ -155,3 +155,8 @@ form {
 .navbar {
     background-color: #F5EFF8 !important;
 }
+
+.taskList {
+    display: flex;
+    justify-content: center;
+}
