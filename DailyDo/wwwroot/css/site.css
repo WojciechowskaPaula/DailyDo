@@ -148,5 +148,10 @@ form {
     height:auto;
     background-color: #F9F4FC;
 }
-   
-   
+.container{
+    text-align:center;
+}
+
+.navbar {
+    background-color: #F5EFF8 !important;
+}

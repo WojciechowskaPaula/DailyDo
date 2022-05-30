@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\images\dailyDoLogo.png" />
+    <Content Remove="wwwroot\images\picture2.svg" />
   </ItemGroup>
 
   <ItemGroup>
