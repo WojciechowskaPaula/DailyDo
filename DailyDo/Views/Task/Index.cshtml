@@ -6,8 +6,8 @@
     if (Model.Tasks.Select(x => x.Category.CategoryId).Contains(category.CategoryId))
     {
         <div class="card w-50" style="width: 20rem;">
-        <div class="card-header">
-            @category.CategoryName | @DateTime.Now.Date.ToShortDateString()
+        <div>
+            <h2 id="card-header">@category.CategoryName | @DateTime.Now.Date.ToShortDateString()</h2>
         </div>
         @foreach (var item in Model.Tasks.Where(x => x.Category.CategoryId == category.CategoryId))
         {
