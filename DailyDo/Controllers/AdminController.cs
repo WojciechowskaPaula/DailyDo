@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace DailyDo.Controllers
 {
     [Authorize(Roles ="Admin")]
-    public class RoleController : Controller
+    public class AdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public RoleController(RoleManager<IdentityRole> roleManager)
+        public AdminController(RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
         }

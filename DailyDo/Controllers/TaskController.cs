@@ -1,10 +1,12 @@
 ﻿using DailyDo.Data;
 using DailyDo.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
 namespace DailyDo.Controllers
 {
+    [Authorize(Roles = "User,Admin")]
     public class TaskController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
