@@ -165,3 +165,7 @@ form {
     font-weight:500;
     padding:10px;
 }
+
+#manageAccount {
+   justify-content:center;
+}
