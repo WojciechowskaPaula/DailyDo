@@ -1,6 +1,6 @@
 ﻿@model TaskAndCategoryVM
 
-<form asp-controller="Task" asp-action="AddNew" method="post">
+<form asp-controller="Task" asp-action="AddNew" method="post" class="form-style >
     <input type="hidden" asp-for=Task.Id >
      <h3>Type all challenges here</h3>
     <div class="col-sm-8">
@@ -8,7 +8,7 @@
             <textarea id="editor" asp-for=Task.Description class="form-control" rows="5"></textarea>
         </div>
     </div>
-    <div class="form-group ">
+    <div class="form-group">
         @Html.LabelFor(x=>Model.Categories, htmlAttributes: new { @class = "control-label col-sm-8 categoryStyle" })
     <div class="col-sm-4">
         @Html.DropDownListFor(x=>x.Task.Category.CategoryId, new SelectList(Model.Categories.Select(i=> new {Text = i.CategoryId, Value = i.CategoryName}), "Text", "Value"), htmlAttributes: new { @class = "form-control", id = "Category Name"})

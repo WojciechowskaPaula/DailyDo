@@ -36,7 +36,7 @@ p {
     display: inline-block;
 }
 
-h1{
+h1,h2 {
     margin-bottom: 90px;
     text-align:center;
     margin: 0 auto;
@@ -129,27 +129,26 @@ customcheck {
     align-items: center;
     height: auto;
 }
+.container-style{
+    text-align:center;
+}
 
 .categoryStyle {
     padding-bottom: 10px;
     padding-top: 10px;
-    font-size:16px;
-    font-weight:500;
-
+    font-size: 16px;
+    font-weight: 500;
 }
 .wrapper {
   text-align:center;
   margin:20px;
 }
 
-form {
+.form-style {
     padding: 15px;
     width: 60%;
-    height:auto;
+    height: auto;
     background-color: #F9F4FC;
-}
-.container{
-    text-align:center;
 }
 
 .navbar {
@@ -164,8 +163,4 @@ form {
     font-size:20px;
     font-weight:500;
     padding:10px;
-}
-
-#manageAccount {
-   justify-content:center;
 }

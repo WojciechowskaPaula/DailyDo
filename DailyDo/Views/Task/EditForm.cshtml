@@ -1,6 +1,7 @@
 ﻿@model DailyDo.Models.Task
 
-<form asp-controller="Task" asp-action="Update" method="post">
+<form asp-controller="Task" asp-action="Update" method="post" class="form-style">
+    <h3>Edit your Task:</h3>
     <input type="hidden" asp-for=Id value="@Model.Id" >
     <input type="hidden" asp-for="ModificationDate" value="@Model.ModificationDate" />
     <input type="hidden" asp-for="IsDone" value="@Model.IsDone" />

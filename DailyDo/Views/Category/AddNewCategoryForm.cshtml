@@ -1,8 +1,9 @@
 ﻿@model Category
 
-<form asp-action="AddNew" method="post">
+<form asp-action="AddNew" method="post" class="form-style">
+    <h3>Add new category:</h3>
     <input type="hidden" asp-for=CategoryId />
-    <div class="col-sm-4">
+    <div class="col-sm-4 ">
 <label for="CategoryName"class="form-label categoryStyle">Category Name:</label>
 <input asp-for="CategoryName" type="text" class="form-control" id="CategoryName"/>
 </div>

@@ -1,6 +1,6 @@
 ﻿@model TaskAndCategoryListsVM
 
-<div class="taskList">
+<div class="taskList container-style">
     @foreach (var category in Model.Categories)
 {
     if (Model.Tasks.Select(x => x.Category.CategoryId).Contains(category.CategoryId))
@@ -28,7 +28,7 @@
     }
 }
 </div>
-<a class="btn btn-primary buttonsMargin" asp-action="AddNewForm">Add new </a>
+<a class="btn btn-primary buttonsMargin wrapper" asp-action="AddNewForm">Add new </a>
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     function SetCheckboxDone(id){
