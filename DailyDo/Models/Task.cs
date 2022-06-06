@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace DailyDo.Models
 {
@@ -17,5 +18,9 @@ namespace DailyDo.Models
         public bool IsDone { get; set; }
 
         public Category Category { get; set; }
+
+        public IdentityUser User { get; set; }
+
+
     }
 }
