@@ -1,6 +1,7 @@
 ﻿using DailyDo.Data;
 using DailyDo.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
@@ -11,17 +12,21 @@ namespace DailyDo.Controllers
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly ILogger<TaskController> _logger;
-        public TaskController(ApplicationDbContext dbContext, ILogger<TaskController> logger)
+        private readonly UserManager<IdentityUser> _userManager;
+        public TaskController(ApplicationDbContext dbContext, ILogger<TaskController> logger, UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
             _logger = logger;
+            _userManager = userManager;
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task <IActionResult> Index()
         {
             _logger.LogInformation("action=index");
-            var allTasks = _dbContext.Tasks.ToList();
+            var signInUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            var allTasks = _dbContext.Tasks.Where(x => x.User == signInUser).ToList();
             var categories = _dbContext.Categories.ToList();
             _logger.LogInformation($"action=index taskCount={allTasks.Count}, categoriesCount={categories.Count}");
             var listsVM = new TaskAndCategoryListsVM();
@@ -44,15 +49,18 @@ namespace DailyDo.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddNew(TaskAndCategoryVM taskAndCategoryVM)
+        public async Task <IActionResult> AddNew(TaskAndCategoryVM taskAndCategoryVM)
         {
 
             _logger.LogInformation($"action=addNew task='{JsonSerializer.Serialize(taskAndCategoryVM)}'");
+            
             var taskFromVM = taskAndCategoryVM.Task;
+            var user = await _userManager.GetUserAsync(HttpContext.User);
             var categoryFromVM = _dbContext.Categories.Where(x => x.CategoryId == taskAndCategoryVM.Task.Category.CategoryId).FirstOrDefault();
             taskFromVM.Category = categoryFromVM;
             taskFromVM.ModificationDate = DateTime.Now;
             taskFromVM.IsDone = false;
+            taskFromVM.User = user;
             var taskToAdd = _dbContext.Tasks.Add(taskFromVM);
             _dbContext.SaveChanges();
             _logger.LogInformation("action=addNew msg='the task saved'");
