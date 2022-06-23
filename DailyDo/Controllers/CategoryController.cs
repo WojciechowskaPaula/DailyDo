@@ -20,10 +20,18 @@ namespace DailyDo.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            _logger.LogInformation("action=index");
-            var categoryList = _dbContext.Categories.ToList();
-            _logger.LogInformation($"action=index categoryCount:{categoryList.Count}");
-            return View(categoryList);
+            try
+            {
+                _logger.LogInformation("action=categoryIndex");
+                var categoryList = _dbContext.Categories.ToList();
+                _logger.LogInformation($"action=categoryIndex categoryCount:{categoryList.Count}");
+                return View(categoryList);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"action=categoryIndex msg='{ex.Message}'", ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         [HttpGet]
@@ -37,21 +45,38 @@ namespace DailyDo.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddNew(Category category)
         {
-            _logger.LogInformation($"action=addNew category='{JsonSerializer.Serialize(category)}'");
-            _dbContext.Categories.Add(category);
-            _dbContext.SaveChanges();
-            _logger.LogInformation($"action=addNew msg='A new category has been saved'");
-            return RedirectToAction("Index");
+            try
+            {
+                _logger.LogInformation($"action=addNewCategory category='{JsonSerializer.Serialize(category)}'");
+                _dbContext.Categories.Add(category);
+                _dbContext.SaveChanges();
+                _logger.LogInformation($"action=addNewCategory msg='A new category has been saved'");
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"action=addNewCategory msg='{ex.Message}' category='{JsonSerializer.Serialize(category)}'", ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
 
+        [HttpGet]
         public IActionResult Delete(int id)
         {
-            _logger.LogInformation($"action=delete id={id}");
-           var categoryToRemove = _dbContext.Categories.Where(x => x.CategoryId == id).FirstOrDefault();
-            _dbContext.Remove(categoryToRemove);
-            _dbContext.SaveChanges();
-            _logger.LogInformation($"action=delete msg='Category with id:{id} has been removed'");
-            return RedirectToAction("Index");
+            try
+            {
+                _logger.LogInformation($"action=categoryDelete id={id}");
+                var categoryToRemove = _dbContext.Categories.Where(x => x.CategoryId == id).FirstOrDefault();
+                _dbContext.Remove(categoryToRemove);
+                _dbContext.SaveChanges();
+                _logger.LogInformation($"action=categoryDelete msg='Category with id:{id} has been removed'");
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"action=categoryDelete msg={ex.Message} id={id}", ex);
+                return RedirectToAction("Error", "Home");
+            }
         }
     }
 }
