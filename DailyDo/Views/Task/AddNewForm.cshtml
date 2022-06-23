@@ -23,7 +23,12 @@
 <script src="https://cdn.tiny.cloud/1/pn04dhiazzimcezx1ab47k7vc9pv0ygbgrfpr9g5cdmgy9e3/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
     ClassicEditor
-        .create( document.querySelector( '#editor' ) )
+        .create( document.querySelector( '#editor' ),{
+         plugins: [
+            SpecialCharacters, SpecialCharactersEssentials, SpecialCharactersEmoji
+        ],
+        toolbar: [ 'specialCharacters', ... ],
+        } )
         .then( editor => {
             console.log( editor );
         } )
