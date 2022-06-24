@@ -2,6 +2,7 @@
 using DailyDo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
 namespace DailyDo.Controllers
@@ -11,10 +12,12 @@ namespace DailyDo.Controllers
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly ILogger<CategoryController> _logger;
-        public CategoryController(ApplicationDbContext dbContext, ILogger<CategoryController> logger)
+        private readonly IMemoryCache _memoryCache;
+        public CategoryController(ApplicationDbContext dbContext, ILogger<CategoryController> logger, IMemoryCache memoryCache)
         {
             _dbContext = dbContext;
             _logger = logger;
+            _memoryCache = memoryCache;
         }
 
         [HttpGet]
@@ -23,9 +26,15 @@ namespace DailyDo.Controllers
             try
             {
                 _logger.LogInformation("action=categoryIndex");
-                var categoryList = _dbContext.Categories.ToList();
-                _logger.LogInformation($"action=categoryIndex categoryCount:{categoryList.Count}");
-                return View(categoryList);
+                var categoryListFromCache = _memoryCache.Get<List<Category>>("categoryList");
+                if(categoryListFromCache == null)
+                {
+                    var categoryList = _dbContext.Categories.ToList();
+                    _memoryCache.Set("categoryList", categoryList);
+                    categoryListFromCache = categoryList;
+                }
+                _logger.LogInformation($"action=categoryIndex categoryCount:{categoryListFromCache.Count}");
+                return View(categoryListFromCache);
             }
             catch(Exception ex)
             {
