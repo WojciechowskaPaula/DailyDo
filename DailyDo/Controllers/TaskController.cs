@@ -3,6 +3,7 @@ using DailyDo.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using System.Text.Json;
 
 namespace DailyDo.Controllers
@@ -13,11 +14,13 @@ namespace DailyDo.Controllers
         private readonly ApplicationDbContext _dbContext;
         private readonly ILogger<TaskController> _logger;
         private readonly UserManager<IdentityUser> _userManager;
-        public TaskController(ApplicationDbContext dbContext, ILogger<TaskController> logger, UserManager<IdentityUser> userManager)
+        private readonly IMemoryCache _memoryCache;
+        public TaskController(ApplicationDbContext dbContext, ILogger<TaskController> logger, UserManager<IdentityUser> userManager, IMemoryCache memoryCache)
         {
             _dbContext = dbContext;
             _logger = logger;
             _userManager = userManager;
+            _memoryCache = memoryCache;
         }
 
         [HttpGet]
@@ -48,10 +51,19 @@ namespace DailyDo.Controllers
             try
             {
                 _logger.LogInformation("action=addNewForm");
-                var categories = _dbContext.Categories.ToList();
-                _logger.LogInformation($"action=addNewForm categoriesCount={categories.Count}");
+                var categoryListFromCache =  _memoryCache.Get<List<Category>>("categoryList");
+                if(categoryListFromCache == null)
+                {
+                    var cacheEntryOptions = new MemoryCacheEntryOptions();
+                    cacheEntryOptions.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5);
+                    var categories = _dbContext.Categories.ToList();
+                    _memoryCache.Set("categoryList", categories,cacheEntryOptions);
+                    categoryListFromCache = categories;
+                }
+               
+                _logger.LogInformation($"action=addNewForm categoriesCount={categoryListFromCache.Count}");
                 TaskAndCategoryVM taskAndCategory = new TaskAndCategoryVM();
-                taskAndCategory.Categories = categories;
+                taskAndCategory.Categories = categoryListFromCache;
                 return View(taskAndCategory);
             }
             catch (Exception ex)
