@@ -29,8 +29,10 @@ namespace DailyDo.Controllers
                 var categoryListFromCache = _memoryCache.Get<List<Category>>("categoryList");
                 if(categoryListFromCache == null)
                 {
+                    var cacheEntryOptions = new MemoryCacheEntryOptions();
+                    cacheEntryOptions.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
                     var categoryList = _dbContext.Categories.ToList();
-                    _memoryCache.Set("categoryList", categoryList);
+                    _memoryCache.Set("categoryList", categoryList, cacheEntryOptions);
                     categoryListFromCache = categoryList;
                 }
                 _logger.LogInformation($"action=categoryIndex categoryCount:{categoryListFromCache.Count}");
